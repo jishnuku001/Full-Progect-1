@@ -4,10 +4,8 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 import pandas as pd
 
-# Import dataset 
 df = pd.read_csv('Data/Processed_data15.csv')
 
-# Label Encoding
 le_carrier = LabelEncoder()
 df['carrier'] = le_carrier.fit_transform(df['carrier'])
 
@@ -17,8 +15,7 @@ df['dest'] = le_dest.fit_transform(df['dest'])
 le_origin = LabelEncoder()
 df['origin'] = le_origin.fit_transform(df['origin'])
 
-# Converting Pandas DataFrame into a Numpy array
-X = df.iloc[:, 0:6].values # from column(years) to column(distance)
+X = df.iloc[:, 0:6].values 
 y = df['delayed']
 
 X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.25,random_state=61) # 75% training and 25% test
@@ -63,5 +60,5 @@ def predict():
     
 if __name__ == '__main__':
 	app.run(debug=False)
-# For mac, make 'app.run(debug=True)'
+
 
